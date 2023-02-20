@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.myshop.mapper.AdminMapper">
+  <select id="admingumae" resultType="HashMap">
+      select g.id ,g.userid, p.title, g.su, g.pay, g.cprice, substring(b.juso, 1, instr(b.juso,' ')-1 ) as juso ,state from gumae as g
+      inner join product as p on g.pcode=p.pcode
+      inner join baesong as b on b.id=g.bae_id order by g.id desc 
+  </select>
+  
+  <update id="chgstate">
+     update gumae set state=#{param1} where id=#{param2}
+  </update>
+  
+</mapper>
+
+
+
+
+
+
+
